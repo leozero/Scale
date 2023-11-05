@@ -1,25 +1,26 @@
 import Phaser from "phaser";
 
-export default class HelloWorldScene extends Phaser.Scene {
+export default class Garden extends Phaser.Scene {
   constructor() {
-    super("hello-world");
+    super("garden");
   }
 
   preload() {
-    this.load.setBaseURL("https://labs.phaser.io");
-
-    this.load.image("sky", "assets/skies/space3.png");
-    this.load.image("logo", "assets/sprites/phaser3-logo.png");
-    this.load.image("red", "assets/particles/red.png");
+    this.load.image("human", "tilesets/tileset_human.png");
+    this.load.tilemapTiledJSON("map_human", "maps/map_human.json");
   }
 
   create() {
-    this.add.image(400, 300, "sky");
-
-    const logo = this.physics.add.image(400, 100, "logo");
-
-    logo.setVelocity(100, 200);
-    logo.setBounce(1, 1);
-    logo.setCollideWorldBounds(true);
+    const level = this.add.tilemap("map_human");
+    const tileset = level.addTilesetImage("human");
+    console.log(
+      "🚀 ~ file: garden.ts:16 ~ Garden ~ create ~ tileset:",
+      tileset
+    );
+    if (tileset === null) {
+      throw new Error("Tileset not found");
+    }
+    level.createLayer("Ground", tileset);
+    level.createLayer("Road", tileset);
   }
 }

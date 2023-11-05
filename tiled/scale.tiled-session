@@ -1,0 +1,41 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "human.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "human.tmx": {
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 323,
+                "y": 299.25
+            }
+        },
+        "human.tmx#human": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "human.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "//wsl.localhost/Ubuntu/home/leozero/www/scale/public/maps",
+    "last.imagePath": "//wsl.localhost/Ubuntu/home/leozero/www/scale/aseprite",
+    "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "human.tmx"
+    ],
+    "project": "scale.tiled-project",
+    "recentFiles": [
+        "human.tmx",
+        "human.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
