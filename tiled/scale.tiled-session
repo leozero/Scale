@@ -8,12 +8,15 @@
         "."
     ],
     "fileStates": {
+        "": {
+            "scaleInEditor": 1
+        },
         "human.tmx": {
             "scale": 2,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 323,
-                "y": 299.25
+                "x": 279.25,
+                "y": 366.5
             }
         },
         "human.tmx#human": {
@@ -26,13 +29,15 @@
         }
     },
     "last.exportedFilePath": "//wsl.localhost/Ubuntu/home/leozero/www/scale/public/maps",
-    "last.imagePath": "//wsl.localhost/Ubuntu/home/leozero/www/scale/aseprite",
+    "last.imagePath": "//wsl.localhost/Ubuntu/home/leozero/www/scale/public/tilesets",
+    "lastUsedTilesetExportFilter": "Tous les Fichiers (*)",
     "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
         "human.tmx"
     ],
     "project": "scale.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
         "human.tmx",
         "human.tsx"
