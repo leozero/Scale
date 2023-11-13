@@ -1,6 +1,5 @@
-import { Asset, assets } from "../constants";
 import { Player } from "../prefab/player";
-import { Matrix } from "../types";
+import { Asset, Matrix } from "../types";
 import { findPath, generateMatrixFromLevel } from "./pathFinding";
 
 export class Level {

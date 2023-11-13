@@ -1,5 +1,5 @@
 import PF from "pathfinding";
-import { Matrix, Position } from "../types";
+import { Matrix } from "../types";
 
 const canCollide = (tiles: (Phaser.Tilemaps.Tile | null)[]): boolean => {
   return tiles.some((tile) => tile?.properties.isSolid);

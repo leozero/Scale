@@ -1,4 +1,4 @@
-import { Asset } from "../constants";
+import { Asset } from "../types";
 
 export const loadAssets = (scene: Phaser.Scene, assets: Asset[]) => {
   for (const asset of assets) {
