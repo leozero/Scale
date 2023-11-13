@@ -256,12 +256,12 @@
   </tile>
   <tile id="49">
    <properties>
-    <property name="isSolid" type="bool" value="false"/>
+    <property name="isSolid" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="50">
    <properties>
-    <property name="isSolid" type="bool" value="false"/>
+    <property name="isSolid" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="51">
@@ -311,12 +311,12 @@
   </tile>
   <tile id="60">
    <properties>
-    <property name="isSolid" type="bool" value="false"/>
+    <property name="isSolid" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="61">
    <properties>
-    <property name="isSolid" type="bool" value="false"/>
+    <property name="isSolid" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="62">
