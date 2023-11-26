@@ -30,10 +30,21 @@ export const assets: Record<string, Asset> = {
     json: "sprites/beekeeper_female.json",
     type: "aseprite",
   },
+  shop: {
+    key: "shop",
+    path: "sprites/shop.png",
+    json: "sprites/shop.json",
+    type: "aseprite",
+  },
+  trader: {
+    key: "trader",
+    path: "sprites/trader.png",
+    type: "image",
+  },
 };
 
 export enum LEVELS {
   GARDEN = "Garden",
 }
 
-export const humanLayers = ["Ground", "Road", "Day", "Obstacles"];
+export const humanLayers = ["Ground", "Road", "Obstacles"];

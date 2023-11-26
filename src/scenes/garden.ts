@@ -1,14 +1,17 @@
 import Phaser from "phaser";
 import { Player } from "../prefab/player";
-import { LEVELS, assets, humanLayers } from "../constants";
+import { LEVELS, TILE_SIZE, assets, humanLayers } from "../constants";
 import { Level } from "../lib/level";
 import { loadAssets } from "../lib/loader";
+import { Shop } from "../prefab/shop";
+import { ShopMenu } from "../prefab/shopMenu";
 
 export default class Garden extends Phaser.Scene {
   player: Player | undefined;
   level: Level | undefined;
   isPlayerMoving = false;
   currentTweensChain: Phaser.Tweens.TweenChain | undefined;
+  shop: Shop | undefined;
 
   constructor() {
     super(LEVELS.GARDEN);
@@ -28,6 +31,8 @@ export default class Garden extends Phaser.Scene {
       assets.bee_human,
       assets.map_human,
       assets.beekeeper_female,
+      assets.shop,
+      assets.trader,
     ];
 
     loadAssets(this, assetsToLoad);
@@ -39,10 +44,12 @@ export default class Garden extends Phaser.Scene {
       assets.map_human,
       assets.tileset_human,
       humanLayers,
-      ["Obstacles", "Day"]
+      ["Obstacles"]
     );
 
-    this.player = new Player(this, 32, 32);
+    this.player = new Player(this, 6, 8);
+    this.shop = new Shop(this, 10, 10, this.level, this.player);
+    const menu = new ShopMenu(this);
 
     this.level.setCamera(this.player);
     this.input.on("pointerdown", this.handleClick, this);

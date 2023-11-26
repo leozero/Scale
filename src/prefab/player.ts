@@ -19,13 +19,15 @@ export class Player extends Phaser.GameObjects.Sprite {
   public animations: Phaser.Animations.Animation[];
   public currentTweensChain?: Phaser.Tweens.TweenChain;
   public moving = false;
+  canMove = true;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
-    super(scene, x, y, PLAYER_SPRITE_NAME, 0);
+    super(scene, x * TILE_SIZE, y * TILE_SIZE, PLAYER_SPRITE_NAME, 0);
     scene.add.existing(this);
     this.animations = scene.anims.createFromAseprite(PLAYER_SPRITE_NAME);
     this.setOrigin(0, 0.5);
     this.play({ key: this.animationWithDirection, repeat: -1 });
+    this.setDepth(5);
   }
 
   get animationWithDirection(): string {
@@ -66,7 +68,10 @@ export class Player extends Phaser.GameObjects.Sprite {
     }
   }
 
-  moveTo(path: Array<Array<number>>) {
+  moveTo(path: Array<Array<number>>, callback?: () => void) {
+    if (!this.canMove) {
+      return;
+    }
     this.currentTweensChain?.stop();
     if (this.moving) {
       path.shift();
@@ -79,7 +84,6 @@ export class Player extends Phaser.GameObjects.Sprite {
         y: coord[1] * TILE_SIZE,
         duration: 200,
         onActive: () => {
-          console.log(coord[0] * TILE_SIZE, this.x);
           const direction = this.calculateDirection(
             coord[0] * TILE_SIZE - this.x,
             coord[1] * TILE_SIZE - this.y
@@ -91,6 +95,7 @@ export class Player extends Phaser.GameObjects.Sprite {
     this.currentTweensChain.on("complete", () => {
       this.changeCurrentAnimation(PlayerAnimation.IDLE, this.currentDirection);
       this.moving = false;
+      callback?.();
     });
   }
 }

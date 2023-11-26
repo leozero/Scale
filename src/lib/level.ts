@@ -1,3 +1,4 @@
+import { TILE_SIZE } from "../constants";
 import { Player } from "../prefab/player";
 import { Asset, Matrix } from "../types";
 import { findPath, generateMatrixFromLevel } from "./pathFinding";
@@ -53,14 +54,49 @@ export class Level {
     return generateMatrixFromLevel(this.tilemap, this.collisionLayers);
   }
 
-  goTo(player: Player, position: Phaser.Math.Vector2) {
-    const targetPosition = this.tilemap.worldToTileXY(position.x, position.y);
+  updateMatrix(x: number, y: number, width: number, height: number) {
+    const row = {
+      start: x,
+      end: x + width / TILE_SIZE,
+    };
+    const column = {
+      start: y,
+      end: y + height / TILE_SIZE,
+    };
+    for (let i = column.start; i < column.end; i++) {
+      for (let j = row.start; j < row.end; j++) {
+        this.matrix[i][j] = 1;
+      }
+    }
+  }
+
+  debugMatrix() {
+    const debug = this.scene.add.graphics();
+    debug.fillStyle(0xff0000, 0.5);
+    this.matrix.forEach((row, i) => {
+      row.forEach((column, j) => {
+        if (column === 1) {
+          debug.fillRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        }
+      });
+    });
+  }
+
+  goTo(
+    player: Player,
+    position: Phaser.Math.Vector2,
+    isTargetTileFormat = false,
+    callback: () => void = () => {}
+  ) {
+    if (!player.canMove) return;
+    const targetPosition = isTargetTileFormat
+      ? position
+      : this.tilemap.worldToTileXY(position.x, position.y);
     const playerPosition = this.tilemap.worldToTileXY(player.x, player.y);
     if (targetPosition && playerPosition) {
-      console.log(this.matrix, playerPosition, targetPosition);
       const path = findPath(this.matrix, playerPosition, targetPosition);
-      if (path) {
-        player.moveTo(path);
+      if (path && path.length > 1) {
+        player.moveTo(path, callback);
       }
     }
   }
