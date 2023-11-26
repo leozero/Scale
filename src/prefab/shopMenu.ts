@@ -13,8 +13,6 @@ export class ShopMenu extends FullScreen {
     this.scene = scene;
     this.gradient = new Gradient(scene);
     this.graphics = scene.add.graphics();
-    this.draw();
-    this.addTrader();
   }
 
   get graphicsWidth() {
@@ -34,6 +32,7 @@ export class ShopMenu extends FullScreen {
     this.graphics.setDepth(100);
     this.graphics.x = this.getCenterX() - width / 2;
     this.graphics.y = this.getCenterY() - height / 2;
+    this.addTrader();
   }
 
   addTrader() {

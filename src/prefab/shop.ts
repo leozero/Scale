@@ -44,6 +44,7 @@ export class Shop extends Phaser.GameObjects.Sprite {
       );
       this.player.canMove = false;
       const menu = new ShopMenu(this.scene);
+      menu.draw();
     });
   }
 }
